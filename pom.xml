@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.3</version>
+        <relativePath/>
+    </parent>
+
+    <packaging>pom</packaging>
+    <groupId>org.ecouniverse.build</groupId>
+    <artifactId>eco-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>eco-parent</name>
+
+
+    <modules>
+        <module>eco-common</module>
+        <module>eco-user</module>
+    </modules>
+
+    <properties>
+        <eco.version>1.0-SNAPSHOT</eco.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <java.version>1.8</java.version>
+        <lombok.version>1.18.18</lombok.version>
+        <hutool.version>5.7.21</hutool.version>
+        <mysql.version>8.0.19</mysql.version>
+        <druid.version>1.2.4</druid.version>
+        <mybatis-plus.version>3.4.3</mybatis-plus.version>
+        <weixin-java.version>4.1.7.B</weixin-java.version>
+        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+        <seata.version>1.4.1</seata.version>
+        <commons-pool2.version>2.9.0</commons-pool2.version>
+        <knife4j.version>2.0.9</knife4j.version>
+        <redisson.version>3.15.1</redisson.version>
+        <elasticsearch.version>7.10.1</elasticsearch.version>
+        <ip2region.version>1.7.2</ip2region.version>
+        <dozer.version>6.2.0</dozer.version>
+        <swagger.version>1.6.2</swagger.version>
+        <skywalking.logback.version>8.4.0</skywalking.logback.version>
+        <aliyun.sdk.oss.vserion>3.1.0</aliyun.sdk.oss.vserion>
+        <xxl-job-core.version>2.3.0</xxl-job-core.version>
+        <prometheus.version>1.7.3</prometheus.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <!--阿里云短信jar-->
+        <aliyun.java.sdk.core.version>4.5.25</aliyun.java.sdk.core.version>
+        <aliyun.java.sdk.dysmsapi.version>2.0.16</aliyun.java.sdk.dysmsapi.version>
+
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--Spring Cloud 相关依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Spring Cloud & Alibaba 相关依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>com.github.binarywang</groupId>-->
+<!--                <artifactId>weixin-java-miniapp</artifactId>-->
+<!--                <version>${weixin-java.version}</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>com.github.binarywang</groupId>-->
+<!--                <artifactId>weixin-java-pay</artifactId>-->
+<!--                <version>${weixin-java.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>io.seata</groupId>-->
+<!--                <artifactId>seata-all</artifactId>-->
+<!--                <version>${seata.version}</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>io.seata</groupId>-->
+<!--                <artifactId>seata-spring-boot-starter</artifactId>-->
+<!--                <version>${seata.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <!-- 分布式锁 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!-- IP转地区工具 -->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.dozermapper</groupId>
+                <artifactId>dozer-core</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-logback-1.x</artifactId>
+                <version>${skywalking.logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.sdk.oss.vserion}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+
+
+         <dependency>
+         	<groupId>org.springframework.boot</groupId>
+         	<artifactId>spring-boot-starter-actuator</artifactId>
+         	<version>${spring-boot.version}</version>
+         </dependency>
+
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun.java.sdk.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+                <version>${aliyun.java.sdk.dysmsapi.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-core</artifactId>
+                <version>${eco.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-web</artifactId>
+                <version>${eco.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-mybatis</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-log</artifactId>
+                <version>${eco.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-redis</artifactId>
+                <version>${eco.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

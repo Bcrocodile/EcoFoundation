@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.eco.common.redis.RedisConfig,\
+  com.eco.common.redis.utils.RedisUtils,\
+  com.eco.common.redis.utils.RedissonUtils,\
+  com.eco.common.redis.cash.RedisCacheConfig,\
+  com.eco.common.redis.redisson.RedissonConfig,\
+  com.eco.common.redis.redisson.RedissonProperties

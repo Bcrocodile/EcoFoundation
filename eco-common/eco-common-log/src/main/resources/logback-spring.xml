@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="logs"/>
+    <!-- logstash地址，从 application.yml 中获取-->
+<!--    <springProperty scope="context" name="LOGSTASH_ADDRESS" source="logstash.address"/>-->
+    <springProperty name="APP_NAME" scope="context" source="spring.application.name"/>
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS}[%thread] %-5level %logger{50} - [%class:%method:%line] - %msg%n"/>
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 日志输出编码 -->
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>300MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!--日志文件保留天数-->
+            <MaxHistory>15</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+<!--    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+        <!--可以访问的logstash日志收集端口-->
+<!--        <destination></destination>-->
+<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                <timestamp>-->
+<!--                    <timeZone>Asia/Shanghai</timeZone>-->
+<!--                </timestamp>-->
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "appname": "${APPLICATION_NAME}",-->
+<!--                        "level": "%level",-->
+<!--                        "thread": "%thread",-->
+<!--                        "logger": "%logger{50} %M %L ",-->
+<!--                        "message": "%msg"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
+<!--                <stackTrace>-->
+<!--                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">-->
+<!--                        <maxDepthPerThrowable>100</maxDepthPerThrowable>-->
+<!--                        <rootCauseFirst>true</rootCauseFirst>-->
+<!--                        <inlineHash>true</inlineHash>-->
+<!--                    </throwableConverter>-->
+<!--                </stackTrace>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!-- warn以下的日志将被屏蔽 -->
+    <logger name="com.alibaba" level="OFF"/>
+    <logger name="org.apache.dubbo" level="OFF"/>
+    <logger name="com.alibaba.nacos.naming.beat.sender" level="OFF"/>
+    <logger name="org.springframework.cloud.alibaba" level="OFF"/>
+    <logger name="org.springframework.context.support" level="OFF"/>
+    <logger name="io.netty.resolver.dns.DnsNameResolver" level="OFF"/>
+    <logger name="com.alibaba.nacos" level="OFF" addtivity="false"> </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE" />
+<!--            <appender-ref ref="LOGSTASH"/>-->
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+<!--            <appender-ref ref="LOGSTASH"/>-->
+        </root>
+    </springProfile>
+
+    <!-- 生产环境输出至文件 -->
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="FILE" />
+        </root>
+    </springProfile>
+</configuration>

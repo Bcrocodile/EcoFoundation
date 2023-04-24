@@ -1,0 +1,16 @@
+server:
+  port: 8085
+#spring:
+#  redis:
+#    host: r-bp160fy5fwcl2bor03.redis.rds.aliyuncs.com
+#    password: tPbPnjgsXY8RNQkR8SW!GWmGv
+#    port: 6379
+#  cache:
+#    type: redis
+#    redis:
+#      time-to-live: 60
+#      #是否缓存空值，防止缓存穿透
+#      cache-null-values: true
+#redisson:
+#  server-address: redis://r-bp160fy5fwcl2bor03.redis.rds.aliyuncs.com
+#  password: tPbPnjgsXY8RNQkR8SW!GWmGv

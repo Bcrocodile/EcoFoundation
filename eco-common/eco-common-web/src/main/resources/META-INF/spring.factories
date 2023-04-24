@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.eco.common.web.config.WebMvcConfig,\
+  com.eco.common.web.config.FeignConfig,\
+  com.eco.common.web.util.resubmit.ResubmitAspect,\
+  com.eco.common.web.exception.GlobalExceptionHandler
