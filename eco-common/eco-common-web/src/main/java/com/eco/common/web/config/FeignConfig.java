@@ -48,9 +48,10 @@ public class FeignConfig {
     }
 
     /**
-     * 覆写拦截器，在feign发送请求前取出原来的header并转发
+     * Feign请求拦截器（设置请求头，传递请求参数）
      *
-     * @return 拦截器
+     * 说明：服务间进行feign调用时，不会传递请求头信息。
+     * 通过实现RequestInterceptor接口，完成对所有的Feign请求,传递请求头和请求参数。
      */
     @Bean
     public RequestInterceptor requestInterceptor() {

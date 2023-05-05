@@ -5,7 +5,6 @@ import cn.hutool.json.JSONUtil;
 import com.eco.common.constant.GlobalConstants;
 import com.eco.common.result.Result;
 import com.eco.common.result.ResultCode;
-import com.eco.common.web.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

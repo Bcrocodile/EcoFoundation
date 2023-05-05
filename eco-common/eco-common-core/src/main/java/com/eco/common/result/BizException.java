@@ -1,6 +1,5 @@
-package com.eco.common.web.exception;
+package com.eco.common.result;
 
-import com.eco.common.result.IResultCode;
 import lombok.Getter;
 
 @Getter

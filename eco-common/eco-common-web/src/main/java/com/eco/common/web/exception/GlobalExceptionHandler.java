@@ -1,6 +1,7 @@
 package com.eco.common.web.exception;
 
 import cn.hutool.json.JSONObject;
+import com.eco.common.result.BizException;
 import com.eco.common.result.Result;
 import com.eco.common.result.ResultCode;
 import com.fasterxml.jackson.core.JsonProcessingException;
