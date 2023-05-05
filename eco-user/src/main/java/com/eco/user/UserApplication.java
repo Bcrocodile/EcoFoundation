@@ -1,4 +1,4 @@
-package eco.user;
+package com.eco.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
