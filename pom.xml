@@ -279,7 +279,13 @@
             <dependency>
                 <groupId>org.ecouniverse.build</groupId>
                 <artifactId>eco-common-mybatis</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${eco.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ecouniverse.build</groupId>
+                <artifactId>eco-common-nacos</artifactId>
+                <version>${eco.version}</version>
             </dependency>
 
             <dependency>
