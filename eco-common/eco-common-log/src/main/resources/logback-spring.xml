@@ -65,11 +65,11 @@
     <!-- warn以下的日志将被屏蔽 -->
     <logger name="com.alibaba" level="OFF"/>
     <logger name="org.apache.dubbo" level="OFF"/>
-    <logger name="com.alibaba.nacos.naming.beat.sender" level="OFF"/>
-    <logger name="org.springframework.cloud.alibaba" level="OFF"/>
+    <logger name="com.alibaba.nacos.naming.beat.sender" level="INFO"/>
+    <logger name="org.springframework.cloud.alibaba" level="INFO"/>
     <logger name="org.springframework.context.support" level="OFF"/>
     <logger name="io.netty.resolver.dns.DnsNameResolver" level="OFF"/>
-    <logger name="com.alibaba.nacos" level="OFF" addtivity="false"> </logger>
+    <logger name="com.alibaba.nacos" level="INFO" addtivity="false"> </logger>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />

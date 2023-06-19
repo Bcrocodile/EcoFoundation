@@ -53,9 +53,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
-        simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
-        simpleModule.addSerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
-        simpleModule.addKeySerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
+//        simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
+//        simpleModule.addSerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
+//        simpleModule.addKeySerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
         simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
         simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT)));
         simpleModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)));

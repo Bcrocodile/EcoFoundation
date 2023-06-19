@@ -3,7 +3,7 @@ package com.eco.common.result;
 
 public interface IResultCode {
 
-    String getCode();
+    Integer getCode();
 
     String getMsg();
 

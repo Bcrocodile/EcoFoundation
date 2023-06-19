@@ -10,7 +10,7 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result<T> implements Serializable {
 
-    private String code;
+    private Integer code;
 
     private T data;
 
@@ -68,7 +68,7 @@ public class Result<T> implements Serializable {
         return result(resultCode.getCode(), resultCode.getMsg(), data);
     }
 
-    private static <T> Result<T> result(String code, String msg, T data) {
+    private static <T> Result<T> result(Integer code, String msg, T data) {
         Result<T> result = new Result<>();
         result.setCode(code);
         result.setData(data);

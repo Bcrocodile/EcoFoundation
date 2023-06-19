@@ -19,6 +19,7 @@
     <module>eco-common-redis</module>
     <module>eco-common-web</module>
     <module>eco-common-mybatis</module>
+    <module>eco-common-nacos</module>
     </modules>
 
 </project>
