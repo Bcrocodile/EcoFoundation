@@ -12,10 +12,11 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.math.BigDecimal;
@@ -28,6 +29,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.TimeZone;
 
+@ConditionalOnProperty(name = "eco.webConfig", havingValue = "true")
 @Configuration
 @Slf4j
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -39,6 +41,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
     protected static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     protected static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
     protected static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
+    protected final static String[] ALLOW_METHOD = new String[]{
+            "GET",
+            "POST",
+            "PUT",
+            "OPTIONS",
+            "DELETE",
+            "PATCH"};
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -53,9 +62,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
-//        simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
-//        simpleModule.addSerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
-//        simpleModule.addKeySerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
+        simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
+        simpleModule.addSerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
+        simpleModule.addKeySerializer(BigDecimal.class, BigDecimalSerialize.INSTANCE);
         simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
         simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT)));
         simpleModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)));
@@ -67,6 +76,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         jackson2HttpMessageConverter.setObjectMapper(objectMapper);
         converters.add(0, jackson2HttpMessageConverter);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")
+                .allowedMethods(ALLOW_METHOD)
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 
 

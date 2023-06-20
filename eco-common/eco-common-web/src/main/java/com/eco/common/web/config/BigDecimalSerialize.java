@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /**
- * @author yiren
+ * @author bcro
  */
 public class BigDecimalSerialize extends StdSerializer<BigDecimal>{
         public final static BigDecimalSerialize INSTANCE = new BigDecimalSerialize();

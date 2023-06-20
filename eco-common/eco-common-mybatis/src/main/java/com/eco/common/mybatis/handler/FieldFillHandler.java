@@ -20,7 +20,7 @@ public class FieldFillHandler implements MetaObjectHandler {
 
         this.setFieldValByName("createTime", new Date(), metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);
-        this.setFieldValByName("deleted", DataDeletedEnum.ZERO.getValue(),metaObject);
+        this.setFieldValByName("useStatus", DataDeletedEnum.ZERO.getValue(),metaObject);
     }
 
     @Override

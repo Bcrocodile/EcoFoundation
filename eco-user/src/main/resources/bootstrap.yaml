@@ -1,2 +1,15 @@
 server:
   port: 8085
+spring:
+  application:
+    name: eco-user
+  cloud:
+    nacos:
+      # 注册中心
+      discovery:
+        server-addr: xx.xx.xx.xx:8848
+      config:
+        server-addr: xx.xx.xx.xx:8848
+        file-extension: yaml
+        shared-configs[0]:
+          data-id: common-config.yaml
